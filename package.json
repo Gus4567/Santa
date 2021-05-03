@@ -1,0 +1,21 @@
+{
+  "name": "birras",
+  "version": "1.0.0",
+  "description": "challengebirras",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git-rba.hackerrank.com/git/21c27074-bb38-4a73-95d4-a05907c7ad5e"
+  },
+  "keywords": [
+    "birras",
+    "node",
+    "js",
+    "mongodb"
+  ],
+  "author": "gustavo sanchez",
+  "license": "ISC"
+}
