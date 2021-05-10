@@ -1,22 +1,24 @@
-const fetch= require('node-fetch')
-const date= 0
+const fetch = require("node-fetch");
+const url =
+  "https://api.openweathermap.org/data/2.5/onecall?lat=-34.6083&lon=-58.3712&exclude=minutely,hourly,alerts&units=metric&appid=";
+//API KEY
+const config = require("../config");
+const { get } = require("../routes/howmany");
+const key = config.api.key;
 
-const url= "https://community-open-weather-map.p.rapidapi.com/climate/april?q=Buenos%20Aires"
+const getWeather = async (date) => {
+  try {
+    const response = await fetch(`${url}${config.api.key}`);
+    console.log("response ok");
+    const processedResponse = await response.json();
+	const temp= processedResponse.daily.find(element => element.dt === date).temp.day
+	return temp
+    console.log(processedResponse);
+  } catch (e) {
+    console.log(e);
+  }
+};
 
-
-fetch(url, {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "e9068a9a65msh7cdad02c21fb4a0p127d03jsn3ad2d3239b90",
-		"x-rapidapi-host": "dark-sky.p.rapidapi.com"
-	}
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(err => {
-	console.error(err);
-});
-
-
-
-
+module.exports= {
+	getWeather: getWeather
+}
