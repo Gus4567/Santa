@@ -11,4 +11,6 @@ const howmany = (number, temp) => {
   
 };
 
-module.exports = howmany;
+module.exports= {
+  howmany: howmany
+}

@@ -3,7 +3,7 @@ const url =
   "https://api.openweathermap.org/data/2.5/onecall?lat=-34.6083&lon=-58.3712&exclude=minutely,hourly,alerts&units=metric&appid=";
 //API KEY
 const config = require("../config");
-const { get } = require("../routes/howmany");
+
 const key = config.api.key;
 
 const getWeather = async (date) => {
