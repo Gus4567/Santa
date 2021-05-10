@@ -1,26 +1,18 @@
 const Meetmodel = require("../models/meets");
-
-//required utils functions
-const getTemp = require("../utils/weather");
-const howmany = require("../utils/beers");
 const parseDate = require("../utils/parsedate");
+const getTemp = require("../utils/weather");
 
-const meetsController = async (req, res) => {
+const tempsController = async (req, res) => {
   const { _id } = req.query;
-  console.log(_id)
 
   try {
     const meet = await Meetmodel.findById(_id);
-    console.log(meet)
+
     if (meet) {
-      const amountPeople = meet.people;
       const date = meet.date;
       const dateEpoch = await parseDate.newDate(date);
       const temp = await getTemp.getWeather(dateEpoch);
-
-      const howMany = howmany.howmany(amountPeople, temp);
-      console.log(howMany);
-      res.status(200).send(meet);
+      res.status(200).send({temp});
     } else {
       res.status(400).send({ message: "not meets finded" });
     }
@@ -31,5 +23,5 @@ const meetsController = async (req, res) => {
 };
 
 module.exports = {
-  meetsController,
+  tempsController,
 };

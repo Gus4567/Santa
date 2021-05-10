@@ -1,23 +1,25 @@
 const Usermodel = require("../models/users");
-const ADMIN_ALLOWED_ROUTES = ["/meet/beers"];
-const USERS_ALLOWED_ROUTES = [];
-const isRouteAllowed= (url, role) => {
-  let found= false 
-  if(role === 'admin'){
+const ADMIN_ALLOWED_ROUTES = ["/meet/beers", "/meet/temp"];
+const USERS_ALLOWED_ROUTES = ["/meet/temp"];
+
+//verify if the user is admin 
+const isRouteAllowed = (url, role) => {
+  let found = false;
+  if (role === "admin") {
     ADMIN_ALLOWED_ROUTES.forEach((route) => {
-      if(url.includes(route)){
-        found= true; 
+      if (url.includes(route)) {
+        found = true;
       }
-    } )
-  }else if(role === 'user'){
+    });
+  } else if (role === "user") {
     ADMIN_ALLOWED_ROUTES.forEach((route) => {
-      if(url.includes(route)){
-       found= true;
+      if (url.includes(route)) {
+        found = true;
       }
-    })
+    });
   }
-  return found 
-}
+  return found;
+};
 module.exports = async (req, res, next) => {
   const { username } = req.headers;
   const user = await Usermodel.find({ name: username });
