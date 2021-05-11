@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema({
   role: {
     type: String,
   },
-  namer: {
+  username: {
     type: String,
   },
   email: {

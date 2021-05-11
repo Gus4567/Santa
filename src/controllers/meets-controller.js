@@ -7,16 +7,16 @@ const parseDate = require("../utils/parsedate");
 
 const meetsController = async (req, res) => {
   const { _id } = req.query;
-  console.log(_id)
+  console.log(_id);
 
   try {
     const meet = await Meetmodel.findById(_id);
-    console.log(meet)
+    console.log(meet);
     if (meet) {
       const amountPeople = meet.people;
       const date = meet.date;
-      const dateEpoch = await parseDate.newDate(date);
-      const temp = await getTemp.getWeather(dateEpoch);
+      const dateEpoch = parseDate.newDate(date);
+      const temp = getTemp.getWeather(dateEpoch);
 
       const howMany = howmany.howmany(amountPeople, temp);
       console.log(howMany);

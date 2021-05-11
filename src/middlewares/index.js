@@ -1,5 +1,5 @@
-const rolePermissions= require('./rolePermissions')
+const {authorization} = require('./authorization')
 
 module.exports= {
-    rolePermissions
+    authorization
 }

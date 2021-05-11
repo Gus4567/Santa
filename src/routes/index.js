@@ -1,10 +1,15 @@
 const express = require("express");
+const app= express()
 const router = express.Router();
-const { rolePermissions } = require("../middlewares");
-const { meetsController, tempsController } = require("../controllers");
+const { authorization} = require("../middlewares");
+const { meetsController, tempsController, meetCreate } = require("../controllers");
+app.use(express.urlencoded({
+    extended:false
+}))
+app.use(express.json())
 
-router.use(rolePermissions);
-router.get("/meet/beers", meetsController);
-router.get("/meet/temp", tempsController);
-router.post("meet/create");
+
+router.get("/meet/beers", authorization(["admin"]), meetsController);
+router.get("/meet/temp", authorization(['admin', 'user']), tempsController);
+router.post("/meet", authorization(["admin"]), meetCreate);
 module.exports = router;
