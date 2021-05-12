@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "d4e6bd81-0e2d-4e42-9d5e-9084f784249e",
+		"name": "challenge Santa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/meet/beers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "username",
+						"value": "Gustavo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/meet/beers?id=60905bcde4a0796e0d9949b9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meet",
+						"beers"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "60905bcde4a0796e0d9949b9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/meet/temp",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "username",
+						"value": "Gustavo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/meet/temp?id=60905bcde4a0796e0d9949b9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meet",
+						"temp"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "60905bcde4a0796e0d9949b9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/meet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "username",
+						"value": "Gustavo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Meet\",\r\n    \"date\": \"2021-05-16\",\r\n    \"people\": \"98\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/meet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"meet"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

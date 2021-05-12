@@ -33,10 +33,7 @@ como para users
 *Todos pasan por un middleware previamente que verifica el role de cada usuario y autoriza acceder.*
 
 # Datos de prueba (usuarios):
-
-
-## Colecciones de prueba
-# GET http://localhost:3000/meet/beers?_id=60905bcde4a0796e0d9949b9 
+Exiten en la raiz del proyecto, una coleccion de Postman para probar. 
 
 ## LiIMITACIONES
 # La API que devuelve la temperatura solo accede a estimación de los 7 próximos días. 
