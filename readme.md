@@ -1,62 +1,44 @@
 
 
 ## CHALLENGE BIRRAS SANTANDER 
-## Description
+## Descripción general
 
-*Este es una API que nos permitirá saber cuántas birras serán necesarias para aprovisonar una reunión específica *  
-_This will also be italic_
 
-**This text will be bold**  
-__This will also be bold__
 
-_You **can** combine them_
+## Se utilizó Node Js y Express, Mongo Db Atlas como BD.
+#
 
-## Lists
+# Para poder utilizarla es necesario crear un archivo .env e insertar las variables de entorno listadas a continuación:
 
-### Unordered
+*MONGO_SRC=mongodb+srv://superbirra:birra@cluster0.vxvsr.mongodb.net/birras?retryWrites=true&w=majority*
+-Que permite conectarse satisfactoriamente a la base de datos. Se puede acceder desde cualquier IP
 
-* Item 1
-* Item 2
-* Item 2a
-* Item 2b
+*API_KEY=2a3323b0143b884f65648b18245ca344*
+-Que permite consumir la API del clima (Open Weather)
 
-### Ordered
+Documentación de la API: basepath/swagger. Ejemplo: localhost:3000/swagger 
+Está comprendida por tres endpoints los cuales son:
 
-1. Item 1
-1. Item 2
-1. Item 3
-  1. Item 3a
-  1. Item 3b
+# 1.- /meet/beers que nos indicara la cantidad de paquetes de birras que seran necesarias para aprovisionar la meet
+y al cual solo pueden acceder administradores.
+1.1-Se utilizó una función que tomaba la cantidad de personas de la meet indicada por id y la temperatura que 
+se obtuvo consumiendo la API Open Weather. 
 
-## Images
 
-![This is a alt text.](/image/sample.png "This is a sample image.")
+# 2.- /meet/temp en el que podremos conocer la temperatura del día de la meet, siendo permitida tanto para admins
+como para users
 
-## Links
+# 3.-/meet para crear una reunión indicando el nombre, fecha y cantidad de gente que asistirá 
 
-You may be using [Markdown Live Preview](https://markdownlivepreview.com/).
+*Todos pasan por un middleware previamente que verifica el role de cada usuario y autoriza acceder.*
 
-## Blockquotes
+# Datos de prueba (usuarios):
 
-> Markdown is a lightweight markup language with plain-text-formatting syntax, created in 2004 by John Gruber with Aaron Swartz.
->
->> Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.
 
-## Tables
+## Colecciones de prueba
+# GET http://localhost:3000/meet/beers?_id=60905bcde4a0796e0d9949b9 
 
-| Left columns  | Right columns |
-| ------------- |:-------------:|
-| left foo      | right foo     |
-| left bar      | right bar     |
-| left baz      | right baz     |
+## LiIMITACIONES
+# La API que devuelve la temperatura solo accede a estimación de los 7 próximos días. 
 
-## Blocks of code
-
-```
-let message = 'Hello world';
-alert(message);
-```
-
-## Inline code
-
-This web site is using `markedjs/marked`.
+# Se realizaron algunos test unitarios con Jest en la función Beers 

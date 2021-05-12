@@ -6,11 +6,10 @@ const howmany = require("../utils/beers");
 const parseDate = require("../utils/parsedate");
 
 const meetsController = async (req, res) => {
-  const { _id } = req.query;
-  console.log(_id);
+  const { id } = req.query;
 
   try {
-    const meet = await Meetmodel.findById(_id);
+    const meet = await Meetmodel.findById(id);
     console.log(meet);
     if (meet) {
       const amountPeople = meet.people;
@@ -20,9 +19,9 @@ const meetsController = async (req, res) => {
 
       const howMany = howmany.howmany(amountPeople, temp);
       console.log(howMany);
-      res.status(200).send(meet);
+      res.status(200).send({ quantity: howMany });
     } else {
-      res.status(400).send({ message: "not meets finded" });
+      res.status(404).send({ message: "not meets finded" });
     }
   } catch (e) {
     console.log(e);

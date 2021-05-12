@@ -11,14 +11,14 @@ const getWeather = async (date) => {
     const response = await fetch(`${url}${config.api.key}`);
     console.log("response ok");
     const processedResponse = await response.json();
-	const temp= processedResponse.daily.find(element => element.dt === date).temp.day
-	return temp
-    console.log(processedResponse);
+    const temp = processedResponse.daily.find((element) => element.dt === date)
+      .temp.day;
+    return temp;
   } catch (e) {
     console.log(e);
   }
 };
 
-module.exports= {
-	getWeather: getWeather
-}
+module.exports = {
+  getWeather: getWeather,
+};

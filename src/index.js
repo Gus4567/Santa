@@ -1,3 +1,7 @@
+//swagger && yaml
+const swagger= require('swagger-ui-express')
+const yaml= require('yamljs')
+const path= require('path')
 //express
 const express = require("express");
 const app = express();
@@ -8,9 +12,15 @@ app.use(morgan("dev"));
 
 //port
 const port = 3000;
+const swaggerDoc= yaml.load(path.join(__dirname, '../.yaml'))
 
 //para recibir json
 app.use(express.json());
+app.use('/swagger', swagger.serve, swagger.setup(swaggerDoc))
+app.use(express.urlencoded({
+  extended:false
+}))
+app.use(express.json())
 
 //db moongose require and connection
 const mongoose = require("mongoose");

@@ -3,10 +3,10 @@ const parseDate = require("../utils/parsedate");
 const getTemp = require("../utils/weather");
 
 const tempsController = async (req, res) => {
-  const { _id } = req.query;
+  const { id } = req.query;
 
   try {
-    const meet = await Meetmodel.findById(_id);
+    const meet = await Meetmodel.findById(id);
 
     if (meet) {
       const date = meet.date;

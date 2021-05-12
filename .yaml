@@ -1,0 +1,160 @@
+swagger: "2.0"
+info:
+  description: "Contrato de API para challenge de Santander"
+  version: "1.0.0"
+  title: "Challenge Meetups"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "p61899@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
+basePath: "/"
+tags:
+- name: "Meets"
+  description: "Everything about your Meets"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+schemes:
+- "https"
+- "http"    
+paths:
+  /meet/beers:
+    get:
+      tags:
+        - "Meets"
+      summary: "get beers number from a specific meet"
+      description: ""
+      operationId: "getBeer"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+        - in: header
+          name: username
+          description: "username for autentication"
+          required: true
+          type: string
+        - in: query
+          name: id
+          description: "Id of meet"
+          required: true
+          type: string
+      responses:
+        "200":
+          description: "process ok"
+          schema: 
+            $ref: '#/definitions/BeersQuantity'
+        "400":
+          description: "Invalid input"
+          schema: 
+            $ref: '#/definitions/Errors'
+        "404":
+          description: "Invalid input"
+          schema: 
+            $ref: '#/definitions/Errors'
+  /meet/temp:
+    get:
+      tags:
+        - "Meets"
+      summary: "get temp of the day of meet"
+      description: ""
+      operationId: "getTemp"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+        - in: header
+          name: username
+          description: "username for autentication"
+          required: true
+          type: string
+        - in: query
+          name: id
+          description: "Id of meet"
+          required: true
+          type: string
+      responses:
+        "200":
+          description: "process ok"
+          schema: 
+            $ref: '#/definitions/Temperature'
+        "400":
+          description: "Invalid input"
+          schema: 
+            $ref: '#/definitions/Errors'
+        "404":
+          description: "Invalid input"
+          schema: 
+            $ref: '#/definitions/Errors'  
+  /meet:
+    post:
+      tags:
+        - "Meets"
+      summary: "create a meet"
+      description: ""
+      operationId: "postMeet"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+        - in: header
+          name: username
+          description: "username for autentication"
+          required: true
+          type: string
+        - in: body
+          name: 'request'
+          schema: 
+            $ref: '#/definitions/Meet'
+      responses:
+        "200":
+          description: "process ok"
+          schema: 
+            $ref: '#/definitions/Meet'
+        "400":
+          description: "Invalid input"
+          schema: 
+            $ref: '#/definitions/ErrorsWithDetails'
+definitions:
+  BeersQuantity:
+    type: "object"
+    properties:
+      quantity: 
+        type: 'number'
+  Temperature:
+    type: "object"
+    properties:
+      temp: 
+        type: 'number'      
+  Errors:
+    type: "object"
+    properties:
+      message: 
+        type: 'string'
+  ErrorsWithDetails:
+    type: "object"
+    properties:
+      message:
+        type: 'string' 
+      details: 
+        type: 'object'
+      
+  Meet:
+    type: "object"
+    properties:
+      name: 
+        type: 'string' 
+      date: 
+        type: 'string' 
+      people: 
+        type: 'string'   
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
+  
