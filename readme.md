@@ -10,7 +10,7 @@
 
 # Para poder utilizarla es necesario crear un archivo .env e insertar las variables de entorno listadas a continuación:
 
-*MONGO_SRC=mongodb+srv://superbirra:birra@cluster0.vxvsr.mongodb.net/birras?retryWrites=true&w=majority*
+*MONGO_SRC=****consultar****
 -Que permite conectarse satisfactoriamente a la base de datos. Se puede acceder desde cualquier IP
 
 *API_KEY=2a3323b0143b884f65648b18245ca344*
